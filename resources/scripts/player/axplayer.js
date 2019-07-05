@@ -545,13 +545,22 @@ var iphoneXFirstPass = true;
             }
             $('.rightPanel').css('height', '');
             if ($('.rightPanel').is(':visible')) {
-                var newWidth = Math.min($(window).width() - lastRightPanelWidthDefault, $('.rightPanel').width(), $(window).width() - $('.leftPanel').width());
+                var lastRightPanelWidthDefaultSub = ($(window).width() - lastRightPanelWidthDefault || 0);
+                var rightPanelWidth = ($('.rightPanel').width() || 0);
+                var leftPanelPanelWidthSub = ($(window).width() - $('.leftPanel').width()) || 0;
+
+                var newWidth = Math.min(lastRightPanelWidthDefaultSub, rightPanelWidth, leftPanelPanelWidthSub);
                 lastRightPanelWidth = Math.max(lastRightPanelWidthDefault, newWidth);
                 $('.rightPanel').width(lastRightPanelWidth ? lastRightPanelWidth : lastRightPanelWidthDefault);
                 $('#rsplitbar').css('left', $(window).width() - $('.rightPanel').width());
             }
             if ($('.leftPanel').is(':visible')) {
-                var newWidth = Math.min($(window).width() - lastLeftPanelWidthDefault, $('.leftPanel').width(), $(window).width() - $('.rightPanel').width());
+                var lastLeftPanelWidthSub = ($(window).width() - lastLeftPanelWidthDefault || 0);
+                var leftPanelWidth = ($('.leftPanel').width() || 0);
+                var rightPanelWidthSub = ($(window).width() - $('.rightPanel').width()) || 0;
+
+                var newWidth = Math.min(lastLeftPanelWidthSub, leftPanelWidth, rightPanelWidthSub);
+
                 lastLeftPanelWidth = Math.max(lastLeftPanelWidthDefault, newWidth);
                 $('.leftPanel').width(lastLeftPanelWidth ? lastLeftPanelWidth : lastLeftPanelWidthDefault);
                 $('#lsplitbar').css('left', $('.leftPanel').width() - 4);
@@ -685,6 +694,9 @@ var iphoneXFirstPass = true;
         var isCentered = $($iframe[0].document.body).css('position') == 'relative';
         if (isCentered && scaleVal == 1) leftPos = 0;
         else if (isCentered && scaleVal == 2) leftPos = $('#mainPanelContainer').width() * scale / 2.0 - contentLeftOfOriginOffset;
+
+        // Include clipFrameScroll offset in mainPanelContainer
+        topPos += (parseFloat($('#clipFrameScroll').css("top")) || 0) * scale;
 
         return {
             left: leftPos,
@@ -914,6 +926,7 @@ var iphoneXFirstPass = true;
         var h = dim[1] != '0' ? dim[1] : '';
 
         var scaleVal = $('.vpScaleOption').find('.selectedRadioButton').parent().attr('val');
+        var selectedScaleValue = scaleVal;
         $axure.player.noFrame = false;
         if (h && scaleVal == 1) $axure.player.noFrame = true;
 
@@ -1019,7 +1032,9 @@ var iphoneXFirstPass = true;
             clipToView: clipToView
         };
         $axure.messageCenter.postMessage('getScale', vpScaleData);
-
+        $axure.messageCenter.postMessage('cloud_ScaleValueChanged', {
+            scale: selectedScaleValue,
+        });
         if (scaleVal == '0' && clipToView) $('#mainPanel').css('overflow', 'auto');
         else $('#mainPanel').css('overflow', '');
     }
@@ -1877,13 +1892,18 @@ var iphoneXFirstPass = true;
         var $pins = $('#existingPinsOverlay').children();
         for (var i = 0; i < $pins.length; i++) {
             // calculate new position of pin
-            const left = parseFloat($($pins[i]).css('left'));
-            const top = parseFloat($($pins[i]).css('top'));
+            const left = parseFloat($($pins[i]).attr('data-x'));
+            const top = parseFloat($($pins[i]).attr('data-y'));
             const width = $($pins[i]).width();
             const height = $($pins[i]).height();
-            // we should scale center of pin instead of left top corner
-            const scaledLeft = ((left + (width / 2)) * data.scaleN / data.prevScaleN) - (width / 2);
-            const scaledTop = ((top + (height / 2)) * data.scaleN / data.prevScaleN) - (height / 2);
+
+            // Get current scale of mainPanelContainer
+            // MainPanelContainer scaled without setContentScale message
+            var scale = $('#mainPanelContainer').css('transform');;
+            scale = (scale == "none") ? 1 : Number(scale.substring(scale.indexOf('(') + 1, scale.indexOf(',')));
+            const scaledLeft = (left * scale) - (width / 2);
+            const scaledTop = (top * scale) - (height / 2);
+
 
             $($pins[i]).css('left', scaledLeft + 'px');
             $($pins[i]).css('top', scaledTop + 'px');
