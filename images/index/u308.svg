@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" xmlns="http://www.w3.org/2000/svg">
-  <g transform="matrix(1 0 0 1 -16 -69 )">
-    <path d="M 3 17.7272727272727  L 3 7.21327276436787  L 0.725494551136364 9.19204268181819  L 0.128028443181817 8.55190041477273  L 9.43142919886364 0.27272727272728  L 17.8386308011364 8.55190041477273  L 17.2411647102273 9.14936652272727  L 15.7474994488636 7.68818236852459  L 15.7474994488636 17.7272727272727  L 3 17.7272727272727  Z M 4 16.8737497159091  L 7.21226938636364 16.9591020170455  L 7.21226938636364 10.3869748806818  C 7.21226938636364 9.10669038068181  8.06579239772727 8.29584351136364  9.34607689772727 8.29584352840909  C 10.5410090965909 8.29584352840909  11.4798844090909 8.9786619375  11.4798844261364 9.87486107386364  L 11.4800483246241 16.8737497159091  L 14.8939764375 16.8737497159091  L 14.8940247669355 6.85325136114368  L 9.38875305681818 1.46765947159091  L 4 6.45232443689162  L 4 16.8737497159091  Z M 8.06579294650804 16.8737497159091  L 10.6263614147727 16.9591020170455  L 10.6263614147727 9.87486107386364  C 10.6263614147727 9.53345186931818  10.1142476079545 9.14936652272727  9.34607689772727 9.14936652272727  C 8.87663925 9.14936652272727  8.06579239772727 9.320071125  8.06579239772727 10.3869748806818  L 8.06579294650804 16.8737497159091  Z " fill-rule="nonzero" fill="#ffffff" stroke="none" fill-opacity="0.866666666666667" transform="matrix(1 0 0 1 16 69 )" />
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="242px" height="304px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter x="296px" y="30px" width="242px" height="304px" filterUnits="userSpaceOnUse" id="filter239">
+      <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetInner" />
+      <feGaussianBlur stdDeviation="8" in="shadowOffsetInner" result="shadowGaussian" />
+      <feComposite in2="shadowGaussian" operator="atop" in="SourceAlpha" result="shadowComposite" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.243137254901961 0  " in="shadowComposite" />
+    </filter>
+    <g id="widget240">
+      <path d="M 313 43  A 1 1 0 0 1 314 42 L 520 42  A 1 1 0 0 1 521 43 L 521 311  A 1 1 0 0 1 520 312 L 314 312  A 1 1 0 0 1 313 311 L 313 43  Z " fill-rule="nonzero" fill="#ffffff" stroke="none" />
+      <path d="M 312.5 43  A 1.5 1.5 0 0 1 314 41.5 L 520 41.5  A 1.5 1.5 0 0 1 521.5 43 L 521.5 311  A 1.5 1.5 0 0 1 520 312.5 L 314 312.5  A 1.5 1.5 0 0 1 312.5 311 L 312.5 43  Z " stroke-width="1" stroke="#dadce0" fill="none" stroke-opacity="0.866666666666667" />
+    </g>
+  </defs>
+  <g transform="matrix(1 0 0 1 -296 -30 )">
+    <use xlink:href="#widget240" filter="url(#filter239)" />
+    <use xlink:href="#widget240" />
   </g>
 </svg>
