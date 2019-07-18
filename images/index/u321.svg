@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="120px" height="24px" viewBox="376 136  120 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 377 138  A 1 1 0 0 1 378 137 L 494 137  A 1 1 0 0 1 495 138 L 495 158  A 1 1 0 0 1 494 159 L 378 159  A 1 1 0 0 1 377 158 L 377 138  Z " fill-rule="nonzero" fill="#ffffff" stroke="none" fill-opacity="0.996078431372549" />
-  <path d="M 376.5 138  A 1.5 1.5 0 0 1 378 136.5 L 494 136.5  A 1.5 1.5 0 0 1 495.5 138 L 495.5 158  A 1.5 1.5 0 0 1 494 159.5 L 378 159.5  A 1.5 1.5 0 0 1 376.5 158 L 376.5 138  Z " stroke-width="1" stroke="#dadce0" fill="none" stroke-opacity="0.996078431372549" />
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="100px" height="24px" viewBox="1303 187  100 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 1304 189  A 1 1 0 0 1 1305 188 L 1401 188  A 1 1 0 0 1 1402 189 L 1402 209  A 1 1 0 0 1 1401 210 L 1305 210  A 1 1 0 0 1 1304 209 L 1304 189  Z " fill-rule="nonzero" fill="#ffffff" stroke="none" />
+  <path d="M 1303.5 189  A 1.5 1.5 0 0 1 1305 187.5 L 1401 187.5  A 1.5 1.5 0 0 1 1402.5 189 L 1402.5 209  A 1.5 1.5 0 0 1 1401 210.5 L 1305 210.5  A 1.5 1.5 0 0 1 1303.5 209 L 1303.5 189  Z " stroke-width="1" stroke="#dadce0" fill="none" stroke-opacity="0.996078431372549" />
 </svg>
